@@ -151,7 +151,11 @@ export function OpeningModal({ packId, packName, onClose }: OpeningModalProps) {
                               name={oc.card.name}
                               rarity={oc.card.rarity}
                               imageUrl={oc.card.imageUrl}
-                              instantSellPrice={oc.instantSellPriceAtDrop}
+                              instantSellPrice={
+                                oc.instantSellPriceAtDrop == null
+                                  ? null
+                                  : String(oc.instantSellPriceAtDrop)
+                              }
                               isSold={isSold}
                               showActions={phase === "done"}
                               onSell={() => handleSell("", oc.card.id)}
