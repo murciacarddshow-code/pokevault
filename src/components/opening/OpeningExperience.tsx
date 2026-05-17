@@ -257,7 +257,11 @@ export function OpeningExperience({ packId, packName, packImageUrl, price, onClo
 
                 <CardReveal
                   card={currentCard.card as any}
-                  instantSellPrice={currentCard.instantSellPriceAtDrop}
+                  instantSellPrice={
+                    currentCard.instantSellPriceAtDrop == null
+                      ? null
+                      : String(currentCard.instantSellPriceAtDrop)
+                  }
                   onKeep={handleNextCard}
                   onSell={() => handleSell(currentCard.card.id)}
                   isSelling={sellingCardId === currentCard.card.id}
