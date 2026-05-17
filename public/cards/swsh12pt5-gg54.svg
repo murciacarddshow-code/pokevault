@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 390" width="280" height="390">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0018"/>
+      <stop offset="50%" style="stop-color:#05050F"/>
+      <stop offset="100%" style="stop-color:#0d0018"/>
+    </linearGradient>
+    <linearGradient id="artbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0018"/>
+      <stop offset="100%" style="stop-color:#06050F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#B44FFF;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:transparent;stop-opacity:0"/>
+    </radialGradient>
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:transparent"/>
+      <stop offset="40%" style="stop-color:white;stop-opacity:0.07"/>
+      <stop offset="50%" style="stop-color:white;stop-opacity:0.18"/>
+      <stop offset="60%" style="stop-color:white;stop-opacity:0.07"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+    <linearGradient id="foil" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#B44FFF;stop-opacity:0.12"/>
+      <stop offset="33%"  style="stop-color:#D4A8FF;stop-opacity:0.08"/>
+      <stop offset="66%"  style="stop-color:#B44FFF;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#D4A8FF;stop-opacity:0.06"/>
+    </linearGradient>
+    <filter id="glow-filter">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="text-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="card-clip"><rect x="0" y="0" width="280" height="390" rx="14"/></clipPath>
+  </defs>
+  
+  <!-- Card base -->
+  <g clip-path="url(#card-clip)">
+    <rect width="280" height="390" fill="url(#bg)"/>
+    
+    <!-- Art area background -->
+    <rect x="12" y="38" width="256" height="236" fill="url(#artbg)" rx="6"/>
+    
+    <!-- Radial glow in art area -->
+    <ellipse cx="140" cy="155" rx="120" ry="110" fill="url(#glow)"/>
+    
+    <!-- Creature art -->
+    
+      <!-- Dark aura -->
+      <ellipse cx="140" cy="195" rx="72" ry="78" fill="#C0C0C0" opacity="0.08"/>
+      <ellipse cx="140" cy="195" rx="55" ry="60" fill="#C0C0C0" opacity="0.12"/>
+      <!-- Shadow tendrils -->
+      <path d="M95,250 Q80,220 90,200 Q100,215 95,250 Z" fill="#C0C0C0" opacity="0.35"/>
+      <path d="M185,250 Q200,220 190,200 Q180,215 185,250 Z" fill="#C0C0C0" opacity="0.35"/>
+      <path d="M120,265 Q110,240 120,225 Q128,238 120,265 Z" fill="#C0C0C0" opacity="0.3"/>
+      <path d="M160,265 Q170,240 160,225 Q152,238 160,265 Z" fill="#C0C0C0" opacity="0.3"/>
+      <!-- Body -->
+      <ellipse cx="140" cy="200" rx="42" ry="52" fill="#C0C0C0" opacity="0.45"/>
+      <!-- Head -->
+      <ellipse cx="140" cy="150" rx="32" ry="30" fill="#C0C0C0" opacity="0.55"/>
+      <!-- Glowing eyes -->
+      <ellipse cx="128" cy="147" rx="8" ry="6" fill="#E8E8FF" opacity="0.95"/>
+      <ellipse cx="152" cy="147" rx="8" ry="6" fill="#E8E8FF" opacity="0.95"/>
+      <ellipse cx="128" cy="147" rx="4" ry="3" fill="#fff" opacity="0.9"/>
+      <ellipse cx="152" cy="147" rx="4" ry="3" fill="#fff" opacity="0.9"/>
+      <!-- Ring markings -->
+      <circle cx="140" cy="195" r="20" fill="none" stroke="#E8E8FF" stroke-width="1.5" opacity="0.4"/>
+    
+    
+    <!-- Particles -->
+    <circle cx="40" cy="80" r="1.2" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="2.0s" begin="0.0s" repeatCount="indefinite"/></circle>
+<circle cx="75" cy="127" r="1.5" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="2.7s" begin="0.4s" repeatCount="indefinite"/></circle>
+<circle cx="110" cy="174" r="1.8" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="3.4s" begin="0.8s" repeatCount="indefinite"/></circle>
+<circle cx="145" cy="221" r="2.1" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="4.1s" begin="1.2s" repeatCount="indefinite"/></circle>
+<circle cx="180" cy="268" r="2.4" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="4.8s" begin="1.6s" repeatCount="indefinite"/></circle>
+<circle cx="215" cy="315" r="2.7" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" begin="2.0s" repeatCount="indefinite"/></circle>
+<circle cx="250" cy="122" r="3.0" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="3.2s" begin="2.4s" repeatCount="indefinite"/></circle>
+<circle cx="65" cy="169" r="1.3" fill="#D4A8FF" opacity="0.6"><animate attributeName="opacity" values="0.6;0;0.6" dur="3.9s" begin="2.8s" repeatCount="indefinite"/></circle>
+
+    
+    <!-- Foil overlay on art -->
+    <rect x="12" y="38" width="256" height="236" fill="url(#foil)" rx="6"/>
+    
+    <!-- Shimmer sweep (animated) -->
+    <rect x="12" y="38" width="256" height="236" fill="url(#shimmer)" rx="6"><animateTransform attributeName="transform" type="translate" values="-280,0;280,0;-280,0" dur="4s" repeatCount="indefinite"/></rect>
+    
+    <!-- Bottom info panel -->
+    <rect x="0" y="282" width="280" height="108" fill="#0d0018" opacity="0.95"/>
+    <rect x="0" y="282" width="280" height="1" fill="#B44FFF" opacity="0.5"/>
+    
+    <!-- Rarity color strip -->
+    <rect x="0" y="282" width="280" height="3" fill="#B44FFF" opacity="0.8"/>
+    
+    <!-- Card name -->
+    <text x="140" y="307" text-anchor="middle" font-family="Arial Black,sans-serif"
+      font-size="15" font-weight="900" fill="#D4A8FF" filter="url(#text-glow)"
+      letter-spacing="0.5">Zamazenta V — Alternat…</text>
+    
+    <!-- Set + number -->
+    <text x="20" y="328" font-family="Arial,sans-serif" font-size="9"
+      fill="#B44FFF" opacity="0.7" letter-spacing="0.5">Crown Zenith · GG54</text>
+    
+    <!-- Rarity label -->
+    <text x="260" y="328" text-anchor="end" font-family="Arial,sans-serif" font-size="9"
+      fill="#B44FFF" opacity="0.7">HYPER RARE</text>
+    
+    <!-- Divider line -->
+    <line x1="16" y1="334" x2="264" y2="334" stroke="#B44FFF" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Price -->
+    <text x="140" y="358" text-anchor="middle" font-family="Arial Black,monospace"
+      font-size="22" font-weight="900" fill="#B44FFF" filter="url(#glow-filter)">€68</text>
+    
+    <!-- PokéVault watermark -->
+    <text x="140" y="378" text-anchor="middle" font-family="Arial,sans-serif"
+      font-size="8" fill="#B44FFF" opacity="0.3" letter-spacing="3">POKÉVAULT</text>
+    
+    <!-- Outer borders -->
+    <rect x="0" y="0" width="280" height="390" fill="none" stroke="#B44FFF" stroke-width="2" rx="14" opacity="0.7"/>
+    <rect x="5" y="5" width="270" height="380" fill="none" stroke="#D4A8FF" stroke-width="0.5" rx="11" opacity="0.4"/>
+    
+    <!-- Top type bar -->
+    <rect x="12" y="12" width="256" height="22" fill="#B44FFF" opacity="0.15" rx="4"/>
+    <rect x="12" y="12" width="256" height="22" fill="none" stroke="#B44FFF" stroke-width="0.5" rx="4" opacity="0.4"/>
+    
+    <!-- HP / energy dots in top bar -->
+    <circle cx="24" cy="23" r="5" fill="#B44FFF" opacity="0.7"/>
+    <circle cx="37" cy="23" r="5" fill="#B44FFF" opacity="0.5"/>
+    <circle cx="50" cy="23" r="5" fill="#B44FFF" opacity="0.3"/>
+    
+    <!-- Card type text in top bar -->
+    <text x="140" y="27" text-anchor="middle" font-family="Arial,sans-serif"
+      font-size="9" fill="#D4A8FF" opacity="0.8" letter-spacing="4">DARK</text>
+    
+    <!-- HP value -->
+    <text x="256" y="27" text-anchor="end" font-family="Arial Black,sans-serif"
+      font-size="10" fill="#D4A8FF" opacity="0.7">HP 186</text>
+  </g>
+</svg>

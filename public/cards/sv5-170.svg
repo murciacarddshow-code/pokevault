@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 390" width="280" height="390">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0012"/>
+      <stop offset="50%" style="stop-color:#05050F"/>
+      <stop offset="100%" style="stop-color:#1a0012"/>
+    </linearGradient>
+    <linearGradient id="artbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0012"/>
+      <stop offset="100%" style="stop-color:#06050F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#EC4899;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:transparent;stop-opacity:0"/>
+    </radialGradient>
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:transparent"/>
+      <stop offset="40%" style="stop-color:white;stop-opacity:0.07"/>
+      <stop offset="50%" style="stop-color:white;stop-opacity:0.18"/>
+      <stop offset="60%" style="stop-color:white;stop-opacity:0.07"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+    <linearGradient id="foil" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#EC4899;stop-opacity:0.12"/>
+      <stop offset="33%"  style="stop-color:#F9A8D4;stop-opacity:0.08"/>
+      <stop offset="66%"  style="stop-color:#EC4899;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#F9A8D4;stop-opacity:0.06"/>
+    </linearGradient>
+    <filter id="glow-filter">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="text-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="card-clip"><rect x="0" y="0" width="280" height="390" rx="14"/></clipPath>
+  </defs>
+  
+  <!-- Card base -->
+  <g clip-path="url(#card-clip)">
+    <rect width="280" height="390" fill="url(#bg)"/>
+    
+    <!-- Art area background -->
+    <rect x="12" y="38" width="256" height="236" fill="url(#artbg)" rx="6"/>
+    
+    <!-- Radial glow in art area -->
+    <ellipse cx="140" cy="155" rx="120" ry="110" fill="url(#glow)"/>
+    
+    <!-- Creature art -->
+    
+      <!-- Water ripples -->
+      <ellipse cx="140" cy="230" rx="80" ry="20" fill="#3498DB" opacity="0.15"/>
+      <ellipse cx="140" cy="225" rx="60" ry="14" fill="#3498DB" opacity="0.2"/>
+      <!-- Shell/body -->
+      <ellipse cx="140" cy="195" rx="55" ry="50" fill="#3498DB" opacity="0.3"/>
+      <!-- Shell pattern -->
+      <path d="M100,195 Q140,155 180,195 Q140,235 100,195 Z" fill="#3498DB" opacity="0.2"/>
+      <path d="M110,180 Q140,165 170,180" fill="none" stroke="#87CEEB" stroke-width="2" opacity="0.5"/>
+      <path d="M105,200 Q140,185 175,200" fill="none" stroke="#87CEEB" stroke-width="2" opacity="0.5"/>
+      <!-- Head -->
+      <ellipse cx="140" cy="148" rx="24" ry="22" fill="#3498DB" opacity="0.6"/>
+      <!-- Eyes -->
+      <circle cx="131" cy="144" r="5" fill="#87CEEB" opacity="0.9"/>
+      <circle cx="149" cy="144" r="5" fill="#87CEEB" opacity="0.9"/>
+      <circle cx="131" cy="144" r="2.5" fill="#fff"/>
+      <circle cx="149" cy="144" r="2.5" fill="#fff"/>
+      <!-- Water jets -->
+      <path d="M95,175 Q75,155 80,135" fill="none" stroke="#87CEEB" stroke-width="3" opacity="0.5"/>
+      <path d="M185,175 Q205,155 200,135" fill="none" stroke="#87CEEB" stroke-width="3" opacity="0.5"/>
+    
+    
+    <!-- Particles -->
+    
+    
+    <!-- Foil overlay on art -->
+    <rect x="12" y="38" width="256" height="236" fill="url(#foil)" rx="6"/>
+    
+    <!-- Shimmer sweep (animated) -->
+    <rect x="12" y="38" width="256" height="236" fill="url(#shimmer)" rx="6"><animateTransform attributeName="transform" type="translate" values="-280,0;280,0;-280,0" dur="4s" repeatCount="indefinite"/></rect>
+    
+    <!-- Bottom info panel -->
+    <rect x="0" y="282" width="280" height="108" fill="#1a0012" opacity="0.95"/>
+    <rect x="0" y="282" width="280" height="1" fill="#EC4899" opacity="0.5"/>
+    
+    <!-- Rarity color strip -->
+    <rect x="0" y="282" width="280" height="3" fill="#EC4899" opacity="0.8"/>
+    
+    <!-- Card name -->
+    <text x="140" y="307" text-anchor="middle" font-family="Arial Black,sans-serif"
+      font-size="15" font-weight="900" fill="#F9A8D4" filter="url(#text-glow)"
+      letter-spacing="0.5">Squirtle — Illustratio…</text>
+    
+    <!-- Set + number -->
+    <text x="20" y="328" font-family="Arial,sans-serif" font-size="9"
+      fill="#EC4899" opacity="0.7" letter-spacing="0.5">151 · 170</text>
+    
+    <!-- Rarity label -->
+    <text x="260" y="328" text-anchor="end" font-family="Arial,sans-serif" font-size="9"
+      fill="#EC4899" opacity="0.7">SPECIAL ILLUSTRATION</text>
+    
+    <!-- Divider line -->
+    <line x1="16" y1="334" x2="264" y2="334" stroke="#EC4899" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Price -->
+    <text x="140" y="358" text-anchor="middle" font-family="Arial Black,monospace"
+      font-size="22" font-weight="900" fill="#EC4899" filter="url(#glow-filter)">€18</text>
+    
+    <!-- PokéVault watermark -->
+    <text x="140" y="378" text-anchor="middle" font-family="Arial,sans-serif"
+      font-size="8" fill="#EC4899" opacity="0.3" letter-spacing="3">POKÉVAULT</text>
+    
+    <!-- Outer borders -->
+    <rect x="0" y="0" width="280" height="390" fill="none" stroke="#EC4899" stroke-width="2" rx="14" opacity="0.7"/>
+    <rect x="5" y="5" width="270" height="380" fill="none" stroke="#F9A8D4" stroke-width="0.5" rx="11" opacity="0.4"/>
+    
+    <!-- Top type bar -->
+    <rect x="12" y="12" width="256" height="22" fill="#EC4899" opacity="0.15" rx="4"/>
+    <rect x="12" y="12" width="256" height="22" fill="none" stroke="#EC4899" stroke-width="0.5" rx="4" opacity="0.4"/>
+    
+    <!-- HP / energy dots in top bar -->
+    <circle cx="24" cy="23" r="5" fill="#EC4899" opacity="0.7"/>
+    <circle cx="37" cy="23" r="5" fill="#EC4899" opacity="0.5"/>
+    <circle cx="50" cy="23" r="5" fill="#EC4899" opacity="0.3"/>
+    
+    <!-- Card type text in top bar -->
+    <text x="140" y="27" text-anchor="middle" font-family="Arial,sans-serif"
+      font-size="9" fill="#F9A8D4" opacity="0.8" letter-spacing="4">WATER</text>
+    
+    <!-- HP value -->
+    <text x="256" y="27" text-anchor="end" font-family="Arial Black,sans-serif"
+      font-size="10" fill="#F9A8D4" opacity="0.7">HP 86</text>
+  </g>
+</svg>
