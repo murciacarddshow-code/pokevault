@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { requireAuth } from "@/lib/auth/guards";
 import { prisma } from "@/lib/db/prisma";
 import { RarityBadge } from "@/components/cards/RarityBadge";
 import { PackImage } from "@/components/packs/PackImage";
 import { CardImage } from "@/components/cards/CardImage";
 import { OpenPackButton } from "@/components/packs/OpenPackButton";
-import { RARITY_CONFIG, getRarityConfig, CARD_RARITIES } from "@/lib/utils/rarity";
+import { getRarityConfig } from "@/lib/utils/rarity";
 import { formatEUR } from "@/lib/utils/format";
 
 export const dynamic = "force-dynamic";
@@ -73,7 +74,7 @@ export default async function PackDetailPage({
   return (
     <div className="pb-20">
       {/* Back link */}
-      <a
+      <Link
         href="/packs"
         className="inline-flex items-center gap-2 text-xs text-gray-500 hover:text-gray-300 transition-colors mb-8 uppercase tracking-wider font-semibold"
       >
@@ -81,7 +82,7 @@ export default async function PackDetailPage({
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
         Todos los packs
-      </a>
+      </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 

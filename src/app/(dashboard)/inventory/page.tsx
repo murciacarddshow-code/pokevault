@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { getRarityConfig } from "@/lib/utils/rarity";
 import { formatEUR } from "@/lib/utils/format";
@@ -389,10 +390,10 @@ export default function InventoryPage() {
           <motion.div className="text-6xl mb-4" animate={{ y:[0,-6,0] }} transition={{ duration:2, repeat:Infinity }}>📦</motion.div>
           <p className="text-lg font-bold text-gray-400 mb-2">Tu inventario está vacío</p>
           <p className="text-sm text-gray-600 mb-6">Abre packs para conseguir cartas</p>
-          <a href="/packs" className="px-6 py-3 rounded-xl font-bold text-sm text-white uppercase tracking-wider"
+          <Link href="/packs" className="px-6 py-3 rounded-xl font-bold text-sm text-white uppercase tracking-wider"
             style={{ background:"linear-gradient(135deg,#B44FFF,#FF4FA8)", boxShadow:"0 0 20px rgba(180,79,255,0.4)" }}>
             Ver Packs
-          </a>
+          </Link>
         </div>
       )}
 
