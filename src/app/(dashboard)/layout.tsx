@@ -73,8 +73,7 @@ export default async function DashboardLayout({
 
             {/* Logout */}
             <LogoutButton
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-red-400 transition-colors"
-              style={{ letterSpacing: "0.08em" } as React.CSSProperties}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-[0.08em] text-gray-500 hover:text-red-400 transition-colors"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
