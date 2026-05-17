@@ -17,7 +17,7 @@ const TIER_RANK: Record<CardRarity, number> = {
   COMMON:0, UNCOMMON:1, RARE:2, DOUBLE_RARE:3,
   ULTRA_RARE:4, ILLUSTRATION_RARE:4,
   SPECIAL_ILLUSTRATION_RARE:5, HYPER_RARE:5,
-  SECRET_RARE:6,
+  SECRET_RARE:6, GOD_HIT:7,
 };
 
 function rarityTier(r: CardRarity): "common"|"rare"|"epic"|"ultra"|"god" {
