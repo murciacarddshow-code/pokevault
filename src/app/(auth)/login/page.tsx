@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { PokevaultLogo } from "@/components/brand/PokevaultLogo";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
   const [error, setError]       = useState<string | null>(null);
@@ -34,8 +32,11 @@ export default function LoginPage() {
         return;
       }
 
-      router.push("/packs");
-      router.refresh();
+      // Hard navigation — ensures the session cookie is included in the
+      // next request. router.push() is a client-side transition that can
+      // race against the cookie being set, causing middleware to see no token.
+      const callbackUrl = new URLSearchParams(window.location.search).get("callbackUrl");
+      window.location.href = callbackUrl ?? "/packs";
     } catch {
       setError("Error de conexión. Inténtalo de nuevo.");
     } finally {

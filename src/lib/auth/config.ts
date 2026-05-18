@@ -1,12 +1,18 @@
 import NextAuth from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "@/lib/db/prisma";
 import { loginSchema } from "@/lib/validations/auth";
 import bcrypt from "bcryptjs";
 
+// NOTE: No PrismaAdapter here.
+// PrismaAdapter + JWT strategy conflict in NextAuth v5:
+//   - Adapter tries to persist sessions in DB
+//   - JWT strategy stores everything in the cookie
+//   - Together they fight over session management
+// With JWT-only strategy we don't need the adapter at all.
+// User/Account/Session tables remain in schema for future OAuth support.
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
@@ -49,10 +55,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token;
     },
     session({ session, token }) {
-      session.user.id       = (token.id as string | undefined) ?? "";
+      session.user.id       = (token.id       as string | undefined) ?? "";
       session.user.role     = (token.role     as string | undefined) ?? "USER";
-      session.user.username = (token.username as string | null    | undefined) ?? null;
+      session.user.username = (token.username as string | null | undefined) ?? null;
       return session;
+    },
+  },
+  // Explicitly set cookie name so getToken() in middleware finds it in production
+  cookies: {
+    sessionToken: {
+      name: process.env.NODE_ENV === "production"
+        ? "__Secure-authjs.session-token"
+        : "authjs.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path:     "/",
+        secure:   process.env.NODE_ENV === "production",
+      },
     },
   },
 });

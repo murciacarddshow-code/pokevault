@@ -1,39 +1,24 @@
-// Lightweight middleware — reads JWT cookie only, no DB, no bcrypt, no Prisma.
-// Stays well under Vercel's 1 MB Edge Function limit.
-//
-// Full auth validation (password check, DB lookup) happens in:
-//   - src/lib/auth/config.ts  (NextAuth handlers, server-side only)
-//   - src/lib/auth/guards.ts  (requireAuth helper used in server components/pages)
+// Lightweight Edge middleware — JWT cookie check only.
+// No Prisma, no bcrypt, no heavy imports → stays under Vercel 1 MB limit.
 
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 const PROTECTED = ["/packs", "/inventory", "/wallet", "/profile", "/opening"];
-const AUTH_ONLY = ["/login", "/register"]; // redirect away if already logged in
+const AUTH_ONLY = ["/login", "/register"];
 const ADMIN     = ["/admin"];
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Let Next internals, static files and public API routes through immediately
-  if (
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/api/auth") ||
-    pathname.startsWith("/api/drops") ||
-    pathname.startsWith("/api/webhooks") ||
-    pathname.startsWith("/sounds") ||
-    pathname.startsWith("/packs/") && pathname.endsWith(".webp") ||
-    pathname === "/favicon.ico" ||
-    pathname === "/favicon.png" ||
-    pathname === "/favicon.svg"
-  ) {
-    return NextResponse.next();
-  }
-
-  // Read JWT — only verifies signature, never hits DB
+  // Read JWT using same cookie name as auth config
   const token = await getToken({
     req,
-    secret: process.env.AUTH_SECRET,
+    secret:     process.env.AUTH_SECRET,
+    // Match the cookie name set in auth/config.ts
+    cookieName: process.env.NODE_ENV === "production"
+      ? "__Secure-authjs.session-token"
+      : "authjs.session-token",
   });
 
   const isLoggedIn = !!token;
@@ -46,9 +31,9 @@ export async function middleware(req: NextRequest) {
 
   // Protect dashboard routes
   if (!isLoggedIn && PROTECTED.some((p) => pathname.startsWith(p))) {
-    const loginUrl = new URL("/login", req.url);
-    loginUrl.searchParams.set("callbackUrl", pathname);
-    return NextResponse.redirect(loginUrl);
+    const url = new URL("/login", req.url);
+    url.searchParams.set("callbackUrl", pathname);
+    return NextResponse.redirect(url);
   }
 
   // Admin only
@@ -62,7 +47,6 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Only run on pages that need auth checks — skip static/image/font requests
   matcher: [
     "/packs/:path*",
     "/inventory/:path*",
