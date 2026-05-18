@@ -1,6 +1,6 @@
 // =============================================================================
 // prisma/schema.prisma — PokéVault v2.0
-// SQLite for local dev — swap provider to "postgresql" for production
+// PostgreSQL for production (Neon) — was sqlite for local dev
 // =============================================================================
 
 generator client {
@@ -8,12 +8,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-// NOTE: SQLite does not support enums. All enum-like fields are String.
-// Valid values documented in comments.
+// NOTE: Enum-like fields use String for flexibility across environments.
+// Valid values documented in comments per model.
 
 // =============================================================================
 // AUTH — NextAuth v5 + PrismaAdapter
@@ -98,7 +98,6 @@ model VerificationToken {
 
 // =============================================================================
 // WALLET
-// balance is Float (SQLite). Use toFixed(2) in app layer for display.
 // =============================================================================
 
 model Wallet {
@@ -127,7 +126,7 @@ model WalletTransaction {
   balanceBefore Float
   balanceAfter  Float
   description   String?
-  // JSON stored as string in SQLite
+  // JSON metadata stored as String for portability
   metadata      String   @default("{}")
   createdAt     DateTime @default(now())
 
